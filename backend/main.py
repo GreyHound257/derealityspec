@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from core.config import PROJECT_NAME, API_V1_STR
-from routers import auth, users
+from routers import auth, users, plots
 
 app = FastAPI(title=PROJECT_NAME, description="Enterprise REMS API")
 
@@ -16,7 +16,7 @@ app.add_middleware(
 
 app.include_router(auth.router, prefix=API_V1_STR + "/auth", tags=["auth"])
 app.include_router(users.router, prefix=API_V1_STR + "/users", tags=["users"])
-# We will include estates/plots routers here as we build them
+app.include_router(plots.router, prefix=API_V1_STR + "/plots", tags=["plots"])
 
 @app.get("/")
 def read_root():
