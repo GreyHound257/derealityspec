@@ -21,8 +21,8 @@ export default function LoginPage() {
         method: "POST",
         body: JSON.stringify({ email, password }),
       });
-      // Redirect to the portal map upon successful authentication
-      router.push("/portal/map");
+      // Redirect to the portal dashboard upon successful authentication
+      router.push("/portal/dashboard");
     } catch (err: any) {
       setError(err.message || "Login failed. Please check your credentials.");
     } finally {
